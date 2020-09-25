@@ -1,7 +1,7 @@
 ********************************************************************************
 * Empirical Illustration
 * M.D. Cattaneo, M. Jansson, X. Ma
-* 21-AUG-2020
+* 24-SEP-2020
 ********************************************************************************
 
 * net install rddensity, from(https://raw.githubusercontent.com/rdpackages/rddensity/master/stata) replace
@@ -16,7 +16,7 @@
 *
 * should be replaced by:
 *
-*     rddensity X, nomasspoints
+*     rddensity X, nomasspoints noregularize
 ********************************************************************************
 ********************************************************************************
 
@@ -55,12 +55,7 @@ rddensity povrate60, p(3) bwselect(diff)
 **********************************
 rddensity povrate60, p(2) bwselect(each) ///
 	plot plot_range(-40 20) plot_n(100 100) ///
-	graph_options(xtitle("Running Variable") legend(off) yscale(r(0 0.035)))
-
-**********************************
-* histogram
-**********************************
-hist povrate60, xline(0) xtitle("Running Variable") ytitle("") legend(off) ///
-	yscale(r(0 0.035))
+	hist_range(-40 20) hist_n(20 10) ///
+	graph_opt(xtitle("Running Variable") legend(off) yscale(r(0 0.035)))
 	
 restore
